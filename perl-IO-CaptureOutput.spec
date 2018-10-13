@@ -4,25 +4,35 @@
 #
 Name     : perl-IO-CaptureOutput
 Version  : 1.1104
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1104.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1104.tar.gz
 Summary  : 'capture STDOUT and STDERR from Perl code, subprocesses or XS'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
-Requires: perl-IO-CaptureOutput-man
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
+Requires: perl-IO-CaptureOutput-license = %{version}-%{release}
+BuildRequires : buildreq-cpan
 
 %description
 NAME
 IO::CaptureOutput - capture STDOUT and STDERR from Perl code,
 subprocesses or XS
 
-%package man
-Summary: man components for the perl-IO-CaptureOutput package.
+%package dev
+Summary: dev components for the perl-IO-CaptureOutput package.
+Group: Development
+Provides: perl-IO-CaptureOutput-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-IO-CaptureOutput package.
+
+
+%package license
+Summary: license components for the perl-IO-CaptureOutput package.
 Group: Default
 
-%description man
-man components for the perl-IO-CaptureOutput package.
+%description license
+license components for the perl-IO-CaptureOutput package.
 
 
 %prep
@@ -50,10 +60,12 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-IO-CaptureOutput
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-IO-CaptureOutput/LICENSE
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -62,8 +74,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/IO/CaptureOutput.pm
+/usr/lib/perl5/vendor_perl/5.26.1/IO/CaptureOutput.pm
 
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/IO::CaptureOutput.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-IO-CaptureOutput/LICENSE
