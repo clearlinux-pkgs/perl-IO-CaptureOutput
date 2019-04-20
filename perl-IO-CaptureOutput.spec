@@ -4,10 +4,10 @@
 #
 Name     : perl-IO-CaptureOutput
 Version  : 1.1104
-Release  : 9
+Release  : 10
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1104.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1104.tar.gz
-Summary  : 'capture STDOUT and STDERR from Perl code, subprocesses or XS'
+Summary  : capture STDOUT and STDERR from Perl code, subprocesses or XS
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-IO-CaptureOutput-license = %{version}-%{release}
@@ -22,6 +22,7 @@ subprocesses or XS
 Summary: dev components for the perl-IO-CaptureOutput package.
 Group: Development
 Provides: perl-IO-CaptureOutput-devel = %{version}-%{release}
+Requires: perl-IO-CaptureOutput = %{version}-%{release}
 
 %description dev
 dev components for the perl-IO-CaptureOutput package.
