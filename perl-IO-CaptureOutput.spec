@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-CaptureOutput
 Version  : 1.1104
-Release  : 8
+Release  : 9
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1104.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1104.tar.gz
 Summary  : 'capture STDOUT and STDERR from Perl code, subprocesses or XS'
