@@ -4,12 +4,13 @@
 #
 Name     : perl-IO-CaptureOutput
 Version  : 1.1105
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1105.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1105.tar.gz
-Summary  : capture STDOUT and STDERR from Perl code, subprocesses or XS
+Summary  : '(DEPRECATED) capture STDOUT and STDERR from Perl code, subprocesses or XS'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
+Requires: perl-IO-CaptureOutput-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : util-linux
 
@@ -23,14 +24,23 @@ Summary: dev components for the perl-IO-CaptureOutput package.
 Group: Development
 Provides: perl-IO-CaptureOutput-devel = %{version}-%{release}
 Requires: perl-IO-CaptureOutput = %{version}-%{release}
-Requires: perl-IO-CaptureOutput = %{version}-%{release}
 
 %description dev
 dev components for the perl-IO-CaptureOutput package.
 
 
+%package perl
+Summary: perl components for the perl-IO-CaptureOutput package.
+Group: Default
+Requires: perl-IO-CaptureOutput = %{version}-%{release}
+
+%description perl
+perl components for the perl-IO-CaptureOutput package.
+
+
 %prep
 %setup -q -n IO-CaptureOutput-1.1105
+cd %{_builddir}/IO-CaptureOutput-1.1105
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -66,8 +76,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/IO/CaptureOutput.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/IO::CaptureOutput.3
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/IO/CaptureOutput.pm
