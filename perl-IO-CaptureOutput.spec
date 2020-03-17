@@ -4,12 +4,13 @@
 #
 Name     : perl-IO-CaptureOutput
 Version  : 1.1105
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1105.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1105.tar.gz
 Summary  : '(DEPRECATED) capture STDOUT and STDERR from Perl code, subprocesses or XS'
 Group    : Development/Tools
-License  : Artistic-1.0-Perl
+License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
+Requires: perl-IO-CaptureOutput-license = %{version}-%{release}
 Requires: perl-IO-CaptureOutput-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : util-linux
@@ -27,6 +28,14 @@ Requires: perl-IO-CaptureOutput = %{version}-%{release}
 
 %description dev
 dev components for the perl-IO-CaptureOutput package.
+
+
+%package license
+Summary: license components for the perl-IO-CaptureOutput package.
+Group: Default
+
+%description license
+license components for the perl-IO-CaptureOutput package.
 
 
 %package perl
@@ -64,6 +73,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-IO-CaptureOutput
+cp %{_builddir}/IO-CaptureOutput-1.1105/LICENSE %{buildroot}/usr/share/package-licenses/perl-IO-CaptureOutput/e283f5a12224408f54e908e5fb57b938cae1a94d
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -81,6 +92,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %defattr(-,root,root,-)
 /usr/share/man/man3/IO::CaptureOutput.3
 
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-IO-CaptureOutput/e283f5a12224408f54e908e5fb57b938cae1a94d
+
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/IO/CaptureOutput.pm
+/usr/lib/perl5/vendor_perl/5.30.2/IO/CaptureOutput.pm
