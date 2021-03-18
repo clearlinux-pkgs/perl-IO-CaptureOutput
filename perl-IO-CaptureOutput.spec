@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-CaptureOutput
 Version  : 1.1105
-Release  : 16
+Release  : 17
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1105.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1105.tar.gz
 Summary  : '(DEPRECATED) capture STDOUT and STDERR from Perl code, subprocesses or XS'
@@ -98,4 +98,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/IO/CaptureOutput.pm
+/usr/lib/perl5/vendor_perl/5.32.1/IO/CaptureOutput.pm
