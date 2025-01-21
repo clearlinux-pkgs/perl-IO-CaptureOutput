@@ -5,7 +5,7 @@
 #
 Name     : perl-IO-CaptureOutput
 Version  : 1.1105
-Release  : 30
+Release  : 31
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1105.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/IO-CaptureOutput-1.1105.tar.gz
 Summary  : '(DEPRECATED) capture STDOUT and STDERR from Perl code, subprocesses or XS'
